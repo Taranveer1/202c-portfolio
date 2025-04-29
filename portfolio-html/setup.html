@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step by Step Guide to Building Your Own Portfolio Site as a Beginner | Developer Portfolio Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="A comprehensive step-by-step guide to building your developer portfolio website, designed for complete beginners with no coding experience required.">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Dev Portfolio Guide</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="setup.html" class="active">Setup Guide</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="content-layout">
+                <article class="main-content">
+                    <div class="page-header">
+                        <h1>Step by Step Guide to Building Your Own Portfolio Site as a Beginner</h1>
+                        <p class="lead">Create a stunning developer portfolio in minutes — absolutely no coding experience required.</p>
+                    </div>
+
+                    <div class="intro-block">
+                        <p>Having a great portfolio is essential for developers of all skill levels. This comprehensive guide will walk you through creating a professional-looking developer portfolio website using a ready-made template and deploying it online — all for <strong>free</strong> and without writing a single line of code!</p>
+                        <p>Whether you're a complete beginner or already have some projects to showcase, this guide will help you create a portfolio that impresses potential employers and clients.</p>
+                    </div>
+
+                    <section class="requirements" id="requirements">
+                        <h2>What You'll Need</h2>
+                        <ul>
+                            <li><strong>GitHub Account</strong> (free) - We'll use GitHub to store your website files and make updates</li>
+                            <li><strong>Vercel Account</strong> (free) - This will host your website so others can see it online</li>
+                            <li><strong>Basic Computer Skills</strong> - If you can browse websites and fill out forms, you already have all the skills needed!</li>
+                            <li><strong>30-60 Minutes</strong> - Set aside some uninterrupted time to complete this guide</li>
+                        </ul>
+                        <div class="tip-box">
+                            <p><strong>Note:</strong> You don't need any coding experience, design skills, or technical background. This guide is specifically designed for complete beginners!</p>
+                        </div>
+                    </section>
+
+                    <div class="setup-progress">
+                        <div class="progress-stage active" data-stage="1">
+                            <div class="progress-number">1</div>
+                            <div class="progress-label">Setup</div>
+                        </div>
+                        <div class="progress-stage" data-stage="2">
+                            <div class="progress-number">2</div>
+                            <div class="progress-label">Customize</div>
+                        </div>
+                        <div class="progress-stage" data-stage="3">
+                            <div class="progress-number">3</div>
+                            <div class="progress-label">Deploy</div>
+                        </div>
+                    </div>
+
+                    <section class="setup-guide">
+                        <div class="setup-stage" id="stage-1">
+                            <h2 class="stage-header">
+                                <span class="stage-number">1</span>
+                                <span class="stage-title">Initial Setup</span>
+                            </h2>
+                            
+                            <div class="setup-step" id="github-account">
+                                <h3>1.1. Create a GitHub Account</h3>
+                                <p>GitHub is a platform where developers store and share their code. We'll use it to host your portfolio files.</p>
+                                
+                                <ol>
+                                    <li>Go to <a href="https://github.com/signup" target="_blank">github.com/signup</a></li>
+                                    <li>Enter your email address in the field provided</li>
+                                    <li>Create a password (make sure it's secure but something you'll remember)</li>
+                                    <li>Choose a username (this will be part of your portfolio URL, so choose wisely!)</li>
+                                    <li>Complete the verification puzzle when prompted</li>
+                                    <li>Click "Create account"</li>
+                                    <li>Check your email and verify your account by clicking the link GitHub sends you</li>
+                                </ol>
+                                
+                                <div class="tip-box">
+                                    <p><strong>Tip:</strong> Your GitHub username will appear in your portfolio URL, so consider using your real name or a professional username that you wouldn't mind sharing with employers.</p>
+                                </div>
+                            </div>
+
+                            <div class="setup-step" id="use-template">
+                                <h3>1.2. Use Our Portfolio Template</h3>
+                                <p>Instead of building a website from scratch, we've created a professional portfolio template that you can customize with your information.</p>
+                                
+                                <ol>
+                                    <li>Go to <a href="https://github.com/dev-portfolio-template/minimal-portfolio" target="_blank">github.com/dev-portfolio-template/minimal-portfolio</a></li>
+                                    <li>Click the green "Use this template" button near the top right of the page</li>
+                                    <li>Select "Create a new repository" from the dropdown</li>
+                                    <li>For the repository name, enter: <code>your-username.github.io</code> 
+                                        <ul>
+                                            <li>Replace "your-username" with your actual GitHub username</li>
+                                            <li>This specific format is important! It must be exactly your username followed by .github.io</li>
+                                        </ul>
+                                    </li>
+                                    <li>Make sure the "Public" option is selected (this is required for GitHub Pages to work)</li>
+                                    <li>Click "Create repository from template"</li>
+                                </ol>
+
+                                <div class="tip-box">
+                                    <p><strong>Example:</strong> If your GitHub username is "jane-developer", you would name your repository "jane-developer.github.io"</p>
+                                </div>
+                                
+                                <div class="tip-box">
+                                    <p><strong>What's happening behind the scenes:</strong> When you use our template, you're creating a copy of a professionally designed portfolio website that you can modify. The template includes a responsive design that looks great on all devices, accessibility features, and optimized loading times.</p>
+                                </div>
+                                
+                                <div class="step-complete">
+                                    <button class="btn-step-complete" data-next="stage-2">
+                                        Setup Complete - Continue to Customization <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="setup-stage" id="stage-2">
+                            <h2 class="stage-header">
+                                <span class="stage-number">2</span>
+                                <span class="stage-title">Customize Your Portfolio</span>
+                            </h2>
+
+                            <div class="setup-step" id="customize">
+                                <h3>2.1. Add Your Personal Information</h3>
+                                <p>Now comes the fun part! Let's personalize your portfolio with your own information.</p>
+                                
+                                <ol>
+                                    <li>In your new repository, find and click on the file called <code>config.json</code></li>
+                                    <li>Click the pencil icon (Edit this file) in the top right corner of the file view</li>
+                                    <li>Update the information with your personal details:
+                                        <ul>
+                                            <li><strong>name:</strong> Your full name (e.g., "Jane Developer")</li>
+                                            <li><strong>title:</strong> Your professional title or the role you're seeking (e.g., "Front-End Developer" or "Software Engineering Student")</li>
+                                            <li><strong>about:</strong> Write 2-3 sentences about yourself, your skills, and what you're passionate about</li>
+                                            <li><strong>location:</strong> Your city and country/state (e.g., "San Francisco, CA" or "London, UK")</li>
+                                            <li><strong>email:</strong> Your professional email address</li>
+                                        </ul>
+                                    </li>
+                                    <li>Update your social media links:
+                                        <ul>
+                                            <li>For any platforms you use, replace the example URLs with links to your profiles</li>
+                                            <li>For platforms you don't use, change the value to an empty string like ""</li>
+                                            <li><strong>Example:</strong> <code>"twitter": "https://twitter.com/yourhandle"</code> or <code>"instagram": ""</code></li>
+                                        </ul>
+                                    </li>
+                                    <li>Customize the theme color if desired:
+                                        <ul>
+                                            <li>The <code>themeColor</code> field accepts hex color codes (e.g., "#3b82f6" for blue)</li>
+                                            <li>You can choose any color you like to personalize your site</li>
+                                            <li>For help finding hex codes, try <a href="https://htmlcolorcodes.com/color-picker/" target="_blank">HTML Color Codes</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>When you're done making changes, scroll down to the bottom of the page</li>
+                                    <li>Enter a short description of your changes in the "Commit changes" box (e.g., "Update personal information")</li>
+                                    <li>Click the green "Commit changes" button</li>
+                                </ol>
+
+                                <div class="tip-box">
+                                    <p><strong>Formatting tip:</strong> Make sure to keep the quotes and colons in the file as they are. Only change the text between the quotes. For example, change <code>"name": "John Doe"</code> to <code>"name": "Your Name"</code>.</p>
+                                </div>
+                            </div>
+
+                            <div class="setup-step" id="add-projects">
+                                <h3>2.2. Add Your Projects</h3>
+                                <p>Projects are the heart of your portfolio. Let's add some to showcase your skills.</p>
+                                
+                                <ol>
+                                    <li>In your repository, find and click on the file called <code>projects.json</code></li>
+                                    <li>Click the pencil icon to edit the file</li>
+                                    <li>The file contains sample projects that you'll replace with your own. Each project has the following structure:
+                                        <pre><code>{
+  "title": "Project Title",
+  "description": "A short description of what this project does",
+  "tags": ["HTML", "CSS", "JavaScript"],
+  "imageUrl": "images/projects/project1.jpg",
+  "liveUrl": "https://example.com",
+  "sourceUrl": "https://github.com/yourusername/project"
+}</code></pre>
+                                    </li>
+                                    <li>For each project, update:
+                                        <ul>
+                                            <li><strong>title:</strong> Give your project a clear, descriptive name</li>
+                                            <li><strong>description:</strong> Explain what the project does and why you created it (2-3 sentences)</li>
+                                            <li><strong>tags:</strong> List the technologies, languages, or frameworks you used</li>
+                                            <li><strong>imageUrl:</strong> You can keep this as is for now (we'll update images later)</li>
+                                            <li><strong>liveUrl:</strong> Link to the live version if available, or use "" if none exists</li>
+                                            <li><strong>sourceUrl:</strong> Link to the GitHub repository if available, or use "" if none exists</li>
+                                        </ul>
+                                    </li>
+                                    <li>You can add additional projects by copying an existing project's format and pasting it as a new entry</li>
+                                    <li>Make sure to separate each project with a comma, except for the last one</li>
+                                    <li>Once you've updated the projects, scroll down and commit your changes</li>
+                                </ol>
+
+                                <div class="tip-box">
+                                    <p><strong>Don't have any projects yet?</strong> No problem! Here are some ideas for beginners:</p>
+                                    <ul>
+                                        <li>Your portfolio website itself (the one you're creating now)</li>
+                                        <li>An online resume or CV you've created</li>
+                                        <li>A personal blog or website you've made</li>
+                                        <li>Coursework or tutorials you've completed</li>
+                                        <li>Small practice projects (even if they're simple)</li>
+                                    </ul>
+                                    <p>Remember that having 2-3 quality projects is better than having many incomplete or low-quality ones.</p>
+                                </div>
+                            </div>
+
+                            <div class="setup-step" id="profile-picture">
+                                <h3>2.3. Add Your Profile Picture</h3>
+                                <p>A professional photo helps make your portfolio more personal and memorable.</p>
+                                
+                                <ol>
+                                    <li>Prepare a professional-looking square image of yourself
+                                        <ul>
+                                            <li>Recommended size: 500x500 pixels</li>
+                                            <li>Choose a photo with good lighting and a neutral background</li>
+                                            <li>Crop it to square dimensions before uploading</li>
+                                            <li>Save it as JPG or PNG format</li>
+                                        </ul>
+                                    </li>
+                                    <li>In your GitHub repository, navigate to the <code>public/images</code> folder</li>
+                                    <li>Click on "Add file" then "Upload files"</li>
+                                    <li>Drag and drop your image or click to select it from your computer</li>
+                                    <li>Rename your image to <code>profile.jpg</code> (or keep the format consistent with the existing file)</li>
+                                    <li>Enter a commit message like "Add profile picture"</li>
+                                    <li>Click "Commit changes"</li>
+                                </ol>
+
+                                <div class="tip-box">
+                                    <p><strong>Profile picture tips:</strong></p>
+                                    <ul>
+                                        <li>Dress professionally or business casual</li>
+                                        <li>Use a recent photo that actually looks like you</li>
+                                        <li>Smile! A friendly expression makes you appear approachable</li>
+                                        <li>If you don't want to use your photo, a professional avatar or logo works too</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="step-complete">
+                                    <button class="btn-step-complete" data-next="stage-3">
+                                        Customization Complete - Continue to Deployment <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="setup-stage" id="stage-3">
+                            <h2 class="stage-header">
+                                <span class="stage-number">3</span>
+                                <span class="stage-title">Deploy Your Website</span>
+                            </h2>
+
+                            <div class="setup-step" id="deploy-github">
+                                <h3>3.1. Deploy with GitHub Pages (Option 1)</h3>
+                                <p>GitHub Pages is the simplest way to make your portfolio visible online:</p>
+                                
+                                <ol>
+                                    <li>In your GitHub repository, click on "Settings" in the top navigation</li>
+                                    <li>In the left sidebar, click on "Pages"</li>
+                                    <li>Under "Source", select "main" from the branch dropdown</li>
+                                    <li>Keep the folder set to "/ (root)"</li>
+                                    <li>Click "Save"</li>
+                                    <li>Wait a few minutes for GitHub to build and deploy your site</li>
+                                    <li>Once deployed, you'll see a message saying "Your site is published at https://your-username.github.io"</li>
+                                </ol>
+                                
+                                <div class="tip-box">
+                                    <p><strong>Important:</strong> It may take up to 10 minutes for your site to become available after you first publish it. If you don't see it right away, be patient and check again later.</p>
+                                </div>
+                            </div>
+
+                            <div class="setup-step" id="deploy-vercel">
+                                <h3>3.2. Deploy with Vercel (Option 2 - More Features)</h3>
+                                <p>Vercel offers more advanced features and faster performance:</p>
+                                
+                                <ol>
+                                    <li>Go to <a href="https://vercel.com/signup" target="_blank">vercel.com/signup</a> and sign up for a free account</li>
+                                    <li>Choose "Continue with GitHub" to connect your GitHub account</li>
+                                    <li>Authorize Vercel to access your GitHub account when prompted</li>
+                                    <li>Once logged in, click the "Add New..." button and select "Project"</li>
+                                    <li>Find and select your portfolio repository from the list</li>
+                                    <li>Vercel will automatically detect the project settings, so you can leave all defaults</li>
+                                    <li>Click "Deploy"</li>
+                                    <li>Wait for the deployment to complete (usually takes less than a minute)</li>
+                                    <li>When finished, Vercel will show you the URL where your site is live</li>
+                                </ol>
+
+                                <div class="tip-box">
+                                    <p><strong>Why choose Vercel?</strong> Vercel offers better performance, analytics, and custom domain support. It's also industry-standard for many professional developers.</p>
+                                </div>
+                            </div>
+
+                            <div class="setup-step" id="custom-domain">
+                                <h3>3.3. Add a Custom Domain (Optional)</h3>
+                                <p>For a more professional look, you can connect your own domain name:</p>
+                                
+                                <ol>
+                                    <li>Purchase a domain from a provider like <a href="https://namecheap.com" target="_blank">Namecheap</a>, <a href="https://domains.google" target="_blank">Google Domains</a>, or <a href="https://godaddy.com" target="_blank">GoDaddy</a></li>
+                                    <li>If using GitHub Pages:
+                                        <ul>
+                                            <li>In your repository settings, go to the "Pages" section</li>
+                                            <li>Under "Custom domain", enter your domain name</li>
+                                            <li>Click "Save"</li>
+                                            <li>Follow the instructions to set up DNS records with your domain provider</li>
+                                        </ul>
+                                    </li>
+                                    <li>If using Vercel:
+                                        <ul>
+                                            <li>Go to your project dashboard in Vercel</li>
+                                            <li>Click on "Settings" then "Domains"</li>
+                                            <li>Enter your domain name and click "Add"</li>
+                                            <li>Follow the instructions to set up DNS records or nameservers</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+
+                                <div class="tip-box">
+                                    <p><strong>Professional domain tips:</strong> For a personal portfolio, consider using your name (like janedeveloper.com) or a professional handle. This looks more professional than generic domains or subdomains.</p>
+                                </div>
+                            </div>
+
+                            <div class="setup-step" id="future-changes">
+                                <h3>3.4. Making Future Updates</h3>
+                                <p>Keeping your portfolio updated is important. Here's how to make changes:</p>
+                                
+                                <ol>
+                                    <li>Go to your GitHub repository</li>
+                                    <li>Navigate to the file you want to change (e.g., config.json, projects.json)</li>
+                                    <li>Click the pencil icon to edit the file</li>
+                                    <li>Make your changes</li>
+                                    <li>Scroll down and commit your changes</li>
+                                    <li>Your site will automatically update within a few minutes</li>
+                                </ol>
+                                
+                                <div class="tip-box">
+                                    <p><strong>Keep your portfolio current:</strong> Update your portfolio whenever you:</p>
+                                    <ul>
+                                        <li>Complete a new project</li>
+                                        <li>Learn a new skill or technology</li>
+                                        <li>Change jobs or responsibilities</li>
+                                        <li>Receive certifications or complete courses</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="next-steps">
+                        <div class="success-message">
+                            <i class="fas fa-check-circle"></i>
+                            <h2>Congratulations!</h2>
+                        </div>
+                        <p>You've successfully created and deployed your own professional developer portfolio! Here's what you can do next:</p>
+                        
+                        <div class="setup-step">
+                            <h3>Share Your Portfolio</h3>
+                            <ul>
+                                <li>Add the URL to your resume and LinkedIn profile</li>
+                                <li>Share it on social media</li>
+                                <li>Include it in job applications and cover letters</li>
+                                <li>Mention it in networking events and interviews</li>
+                            </ul>
+                            
+                            <h3>Enhance Your Portfolio</h3>
+                            <ul>
+                                <li>Add more projects as you create them</li>
+                                <li>Include testimonials or recommendations</li>
+                                <li>Add a blog section to share your learning journey</li>
+                                <li>Update your skills and technologies as you learn new ones</li>
+                            </ul>
+                            
+                            <h3>Learn More</h3>
+                            <ul>
+                                <li>Explore HTML, CSS, and JavaScript to make custom changes</li>
+                                <li>Learn about SEO to make your portfolio more discoverable</li>
+                                <li>Study web analytics to see who's visiting your site</li>
+                                <li>Connect with other developers and share feedback</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cta">
+                            <h3>Ready to take your portfolio to the next level?</h3>
+                            <p>Check out our additional resources for customizing and enhancing your developer portfolio!</p>
+                            <a href="#" class="btn btn-primary">Advanced Portfolio Tips</a>
+                        </div>
+                    </section>
+                </article>
+                
+                <aside class="sidebar">
+                    <div class="sidebar-block">
+                        <h3>Guide Progress</h3>
+                        <ul class="progress-nav">
+                            <li><a href="#requirements">What You'll Need</a></li>
+                            <li class="stage-nav">
+                                <span class="stage-label">Stage 1: Setup</span>
+                                <ul>
+                                    <li><a href="#github-account">Create GitHub Account</a></li>
+                                    <li><a href="#use-template">Use Template</a></li>
+                                </ul>
+                            </li>
+                            <li class="stage-nav">
+                                <span class="stage-label">Stage 2: Customize</span>
+                                <ul>
+                                    <li><a href="#customize">Add Information</a></li>
+                                    <li><a href="#add-projects">Add Projects</a></li>
+                                    <li><a href="#profile-picture">Add Profile Picture</a></li>
+                                </ul>
+                            </li>
+                            <li class="stage-nav">
+                                <span class="stage-label">Stage 3: Deploy</span>
+                                <ul>
+                                    <li><a href="#deploy-github">GitHub Pages</a></li>
+                                    <li><a href="#deploy-vercel">Vercel</a></li>
+                                    <li><a href="#custom-domain">Custom Domain</a></li>
+                                    <li><a href="#future-changes">Future Updates</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-block help">
+                        <h3>Need More Help?</h3>
+                        <p>If you're stuck or have questions, these resources can help:</p>
+                        <ul>
+                            <li><a href="https://docs.github.com/en/get-started" target="_blank">GitHub Beginner Guide</a></li>
+                            <li><a href="https://vercel.com/docs/beginner-tutorial" target="_blank">Vercel Tutorial</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Learn" target="_blank">Web Development Basics</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-block">
+                        <h3>Common Questions</h3>
+                        <ul>
+                            <li><strong>Do I need coding experience?</strong><br>No! This guide is designed for absolute beginners.</li>
+                            <li><strong>Is this really free?</strong><br>Yes, GitHub and Vercel offer free hosting for personal portfolios.</li>
+                            <li><strong>Will my site be mobile-friendly?</strong><br>Absolutely! Our template is responsive and works on all devices.</li>
+                            <li><strong>How do I add more features?</strong><br>After mastering the basics, you can explore HTML/CSS/JS to customize further.</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Dev Portfolio Guide</h3>
+                    <p>A simple guide to help developers create professional portfolios to showcase their skills and projects.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="setup.html">Setup Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://github.com/topics/portfolio-template" target="_blank">GitHub Templates</a></li>
+                        <li><a href="https://vercel.com/" target="_blank">Vercel Hosting</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn" target="_blank">MDN Docs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2023 Developer Portfolio Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
