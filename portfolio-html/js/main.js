@@ -1,231 +1,242 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
+// Modern Portfolio Guide JavaScript
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Cache DOM elements
+    const header = document.querySelector('.site-header');
+    const progressBar = document.getElementById('readingProgress');
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
-    
-    if (mobileMenuToggle && mainNav) {
-        mobileMenuToggle.addEventListener('click', function() {
-            mainNav.classList.toggle('active');
-            mobileMenuToggle.classList.toggle('active');
-        });
-    }
-    
-    // Setup guide stage navigation
-    const setupStages = document.querySelectorAll('.setup-stage');
     const progressStages = document.querySelectorAll('.progress-stage');
-    const continueButtons = document.querySelectorAll('.btn-step-complete');
-    
-    // Initialize - show only first stage
-    if (setupStages.length > 0) {
-        setupStages.forEach((stage, index) => {
-            if (index > 0) {
-                stage.style.display = 'none';
-            }
-        });
-    }
-    
-    // Handle continue buttons
-    if (continueButtons.length > 0) {
-        continueButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const targetStage = this.dataset.next;
-                const currentStage = this.closest('.setup-stage').id;
-                const currentIndex = parseInt(currentStage.split('-')[1]);
-                
-                // Hide current stage
-                document.getElementById(currentStage).style.display = 'none';
-                
-                // Show target stage
-                document.getElementById(targetStage).style.display = 'block';
-                
-                // Update progress indicators
-                updateProgress(currentIndex + 1);
-                
-                // Scroll to top of new stage
-                window.scrollTo({
-                    top: document.getElementById(targetStage).offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    }
-    
-    // Progress tracker
-    function updateProgress(activeStage) {
-        if (progressStages.length > 0) {
-            progressStages.forEach((stage, index) => {
-                const stageNum = index + 1;
-                
-                // Reset classes
-                stage.classList.remove('active', 'completed');
-                
-                // Mark completed stages
-                if (stageNum < activeStage) {
-                    stage.classList.add('completed');
-                }
-                
-                // Mark active stage
-                if (stageNum === activeStage) {
-                    stage.classList.add('active');
-                }
-            });
+    const setupStages = document.querySelectorAll('.setup-stage');
+    const stageButtons = document.querySelectorAll('.btn-step-complete');
+    const scrollThreshold = 50;
+
+    // Performance optimization: Use passive listeners for scroll events
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > scrollThreshold) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
+        
+        // Update reading progress in the same scroll handler to reduce listeners
+        if (progressBar) {
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / totalHeight) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+    }, { passive: true });
+
+    // Mobile menu toggle
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
     }
-    
-    // Sidebar navigation
-    const sidebarLinks = document.querySelectorAll('.sidebar a');
-    
-    if (sidebarLinks.length > 0) {
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                
-                // Only handle internal links
-                if (!targetId.startsWith('#')) return;
-                
-                e.preventDefault();
-                
-                // If it's a stage link, make sure that stage is visible
-                if (targetId.includes('stage')) {
-                    const stageNumber = parseInt(targetId.split('-')[1]);
-                    
-                    // Show the correct stage
-                    setupStages.forEach((stage, index) => {
-                        stage.style.display = index + 1 === stageNumber ? 'block' : 'none';
+
+    // Progress navigation - initialize if exists
+    if (progressStages.length > 0) {
+        updateStageProgress();
+    }
+
+    // Handle stage buttons
+    stageButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const nextStage = button.getAttribute('data-next');
+            if (nextStage) {
+                const targetElement = document.getElementById(nextStage);
+                if (targetElement) {
+                    const offset = targetElement.offsetTop - 100;
+                    window.scrollTo({
+                        top: offset,
+                        behavior: 'smooth'
                     });
                     
                     // Update progress
-                    updateProgress(stageNumber);
+                    updateStageProgress(nextStage);
                 }
-                
-                // Smooth scroll to target
-                const target = document.querySelector(targetId);
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
+            }
+        });
+    });
+
+    function updateStageProgress(currentStage) {
+        // Get stage number from ID if provided
+        let currentStageNum = 1;
+        if (currentStage) {
+            const match = currentStage.match(/stage-(\d+)/);
+            if (match && match[1]) {
+                currentStageNum = parseInt(match[1]);
+            }
+        } else {
+            // Check for hash in URL
+            const hash = window.location.hash;
+            if (hash) {
+                const match = hash.match(/stage-(\d+)/);
+                if (match && match[1]) {
+                    currentStageNum = parseInt(match[1]);
                 }
-            });
+            }
+        }
+
+        // Update progress stages
+        progressStages.forEach((stage, index) => {
+            const stageNum = index + 1;
+            if (stageNum < currentStageNum) {
+                stage.classList.add('completed');
+                stage.classList.remove('active');
+            } else if (stageNum === currentStageNum) {
+                stage.classList.add('active');
+                stage.classList.remove('completed');
+            } else {
+                stage.classList.remove('active', 'completed');
+            }
         });
     }
-    
-    // Handle smooth scrolling for all anchor links
-    const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
-    
-    if (allAnchorLinks.length > 0) {
-        allAnchorLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                
-                // Skip empty anchors
-                if (targetId === '#') return;
-                
-                const target = document.querySelector(targetId);
-                
-                if (target) {
-                    e.preventDefault();
-                    
-                    // Check if target is in a hidden stage (on setup page)
-                    const parentStage = target.closest('.setup-stage');
-                    if (parentStage && parentStage.style.display === 'none') {
-                        // Show the correct stage
-                        setupStages.forEach(stage => {
-                            stage.style.display = stage === parentStage ? 'block' : 'none';
-                        });
-                        
-                        // Update progress
-                        const stageNumber = parseInt(parentStage.id.split('-')[1]);
-                        updateProgress(stageNumber);
-                    }
-                    
-                    // Scroll to target
-                    window.scrollTo({
-                        top: target.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (mainNav.classList.contains('active')) {
-                        mainNav.classList.remove('active');
-                        mobileMenuToggle.classList.remove('active');
-                    }
-                }
-            });
+
+    // Performance optimization: Create a single IntersectionObserver for all animations
+    const animateOnScroll = () => {
+        const elementsToAnimate = document.querySelectorAll('.setup-step, .step, .resource-card, .image-highlight');
+        
+        // Initialize the animation styles once
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            .will-animate {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+            .animated {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .step.will-animate {
+                transform: translateY(30px);
+                transition-delay: calc(var(--animation-order, 0) * 0.1s);
+            }
+            .resource-card.will-animate {
+                transition-delay: calc(var(--animation-order, 0) * 0.1s);
+            }
+        `;
+        document.head.appendChild(styleSheet);
+        
+        // Set animation order for elements that need staggered animation
+        document.querySelectorAll('.step').forEach((step, index) => {
+            step.style.setProperty('--animation-order', index + 1);
         });
-    }
-    
-    // Add animations on scroll for homepage elements
-    const animatedElements = document.querySelectorAll('.benefit-card, .step');
-    
-    if (animatedElements.length > 0) {
+        
+        document.querySelectorAll('.resource-card').forEach((card, index) => {
+            card.style.setProperty('--animation-order', index + 1);
+        });
+        
+        // Create a single observer for all elements
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+                    entry.target.classList.add('animated');
                     observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         });
         
-        animatedElements.forEach(element => {
+        // Add animation class and observe each element
+        elementsToAnimate.forEach(element => {
+            element.classList.add('will-animate');
             observer.observe(element);
         });
-        
-        // Add CSS for animations
-        const animationStyle = document.createElement('style');
-        animationStyle.textContent = `
-            .benefit-card, .step {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.6s ease, transform 0.6s ease;
-            }
-            
-            .benefit-card.animate, .step.animate {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            
-            .benefit-card:nth-child(2), .step:nth-child(2) {
-                transition-delay: 0.2s;
-            }
-            
-            .benefit-card:nth-child(3), .step:nth-child(3) {
-                transition-delay: 0.4s;
-            }
-            
-            .step:nth-child(4) {
-                transition-delay: 0.6s;
-            }
-        `;
-        document.head.appendChild(animationStyle);
-    }
+    };
     
-    // Add setup stage animation
-    const setupStepsAnimation = document.createElement('style');
-    setupStepsAnimation.textContent = `
-        .setup-step {
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
+    // Initialize animations
+    animateOnScroll();
+
+    // Smooth scroll for anchor links - delegate to parent
+    document.body.addEventListener('click', (e) => {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (!anchor) return;
         
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        e.preventDefault();
+        
+        const targetId = anchor.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const headerHeight = header.offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            
+            window.scrollTo({
+                top: targetPosition - headerHeight - 20,
+                behavior: 'smooth'
+            });
+            
+            // Update URL without scrolling
+            history.pushState(null, null, targetId);
+        }
+    });
+
+    // Sidebar navigation - use event delegation
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+        sidebar.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (!link) return;
+            
+            // Remove active class from all links
+            sidebar.querySelectorAll('a').forEach(a => a.classList.remove('current'));
+            // Add active class to clicked link
+            link.classList.add('current');
+        });
+    }
+
+    // Optimized code highlighting with memoization
+    const enhanceCodeBlocks = () => {
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        // Syntax highlighting patterns
+        const patterns = [
+            // Keywords - using word boundaries for accuracy
+            {
+                pattern: /\b(const|let|var|function|return|import|export|from|if|else|for|while|switch|case|break|continue|default|class|extends|new|this|super|try|catch|finally|throw|async|await|typeof|instanceof|in|of|as|interface|type|enum)\b/g,
+                replacement: '<span class="keyword">$1</span>'
+            },
+            // Functions/methods
+            {
+                pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\(/g,
+                replacement: '<span class="function">$1</span>('
+            },
+            // Strings - handle escaped quotes properly
+            {
+                pattern: /(['"`])((?:\\.|[^\\])*?)\1/g,
+                replacement: '<span class="string">$1$2$1</span>'
+            },
+            // Comments - single line
+            {
+                pattern: /(\/\/.*)/g,
+                replacement: '<span class="comment">$1</span>'
+            },
+            // Comments - multi line (with non-greedy matching)
+            {
+                pattern: /(\/\*[\s\S]*?\*\/)/g,
+                replacement: '<span class="comment">$1</span>'
             }
-        }
+        ];
         
-        .setup-step:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .setup-step:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-    `;
-    document.head.appendChild(setupStepsAnimation);
+        codeBlocks.forEach(block => {
+            let content = block.innerHTML;
+            
+            // Apply each pattern
+            patterns.forEach(({ pattern, replacement }) => {
+                content = content.replace(pattern, replacement);
+            });
+                
+            block.innerHTML = content;
+        });
+    };
+    
+    // Initialize code highlighting
+    enhanceCodeBlocks();
 }); 

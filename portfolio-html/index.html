@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step by Step Guide to Building Your Own Portfolio Site as a Beginner</title>
-    <meta name="description" content="Learn how to create a stunning developer portfolio website with our step-by-step guide, designed for complete beginners with no coding experience required.">
+    <title>Internet Resource Guide: Step-by-Step Guide on How to Build a Developer Portfolio Site for Free</title>
+    <meta name="description" content="A comprehensive technical guide for CS students to build a professional developer portfolio website that showcases their coding projects, technical skills, and GitHub contributions to potential employers - completely free.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="site-header">
         <div class="container">
             <div class="logo">
-                <a href="index.html">Dev Portfolio Guide</a>
+                <a href="index.html"><i class="fas fa-code"></i> Dev Portfolio Guide</a>
             </div>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="setup.html">Setup Guide</a></li>
+                    <li><a href="setup.html">Portfolio Guide</a></li>
+                    <li><a href="#resources">Resources</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
@@ -28,14 +32,18 @@
         </div>
     </header>
 
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="readingProgress"></div>
+    </div>
+
     <div class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Step by Step Guide to Building Your Own Portfolio Site as a Beginner</h1>
-                <p>Create a professional portfolio website without writing a single line of code</p>
+                <h1>Step-by-Step Guide on How to Build a Developer Portfolio Site for Free</h1>
+                <p>A technical Internet Resource Guide for CS students to create a professional portfolio that showcases coding skills, projects, and GitHub contributions</p>
                 <div class="cta-buttons">
-                    <a href="setup.html" class="btn btn-primary">Get Started</a>
-                    <a href="#steps" class="btn btn-secondary">Learn More</a>
+                    <a href="setup.html" class="btn btn-primary"><i class="fas fa-rocket"></i> Start Building</a>
+                    <a href="#guide-content" class="btn btn-secondary"><i class="fas fa-arrow-down"></i> View Guide</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -45,91 +53,166 @@
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <pre><code>&lt;!-- Portfolio structure -->
-&lt;header>
-  &lt;nav>...&lt;/nav>
-&lt;/header>
+                    <pre><code><span class="comment">// Portfolio Component Structure</span>
+<span class="keyword">import</span> React, { useState, useEffect } <span class="keyword">from</span> <span class="string">'react'</span>;
+<span class="keyword">import</span> { 
+  ProjectCard, 
+  SkillBadge, 
+  GithubStats 
+} <span class="keyword">from</span> <span class="string">'./components'</span>;
 
-&lt;section class="about">
-  &lt;h1>John Developer&lt;/h1>
-  &lt;p>Frontend Engineer&lt;/p>
-&lt;/section>
+<span class="keyword">const</span> <span class="function">Portfolio</span> = () => {
+  <span class="keyword">const</span> [isLoading, setIsLoading] = useState(<span class="keyword">true</span>);
+  <span class="keyword">const</span> technologies = [
+    <span class="string">'React'</span>, <span class="string">'TypeScript'</span>, <span class="string">'Node.js'</span>,
+    <span class="string">'GraphQL'</span>, <span class="string">'Docker'</span>, <span class="string">'AWS'</span>
+  ];
 
-&lt;section class="projects">
-  &lt;!-- Your best work -->
-&lt;/section>
+  useEffect(() => {
+    <span class="comment">// Fetch GitHub stats and repositories</span>
+    fetchGithubData();
+  }, []);
 
-&lt;footer>
-  &lt;div class="contact">...&lt;/div>
-&lt;/footer></code></pre>
+  <span class="keyword">return</span> (
+    <span class="string">&lt;div className="portfolio"&gt;</span>
+      <span class="string">&lt;Header /&gt;</span>
+      <span class="string">&lt;About&gt;</span>
+        {technologies.map(tech => (
+          <span class="string">&lt;SkillBadge key={tech} name={tech} /&gt;</span>
+        ))}
+      <span class="string">&lt;/About&gt;</span>
+      <span class="string">&lt;GithubStats profile="yourname" /&gt;</span>
+      <span class="string">&lt;Projects /&gt;</span>
+      <span class="string">&lt;Contact /&gt;</span>
+    <span class="string">&lt;/div&gt;</span>
+  );
+}</code></pre>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="benefits">
+    <section class="guide-content" id="guide-content">
         <div class="container">
-            <h2>Why You Need a Portfolio</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Stand Out to Employers</h3>
-                    <p>Recruiters spend an average of just 30 seconds reviewing applications. A portfolio showcases your skills visually and instantly.</p>
+            <div class="section-heading">
+                <span class="section-badge">Front Matter</span>
+                <h2>Guide Information</h2>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-block">
+                    <h3><i class="fas fa-book"></i> What's in the Guide</h3>
+                    <p>This resource guide provides comprehensive information for computer science students to build a professional portfolio website that showcases their technical projects, coding skills, and professional profile. It covers the entire process from setting up a development environment to deploying a fully functional portfolio site without any cost, using modern web development technologies and platforms.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Show, Don't Tell</h3>
-                    <p>Don't just claim you can code - prove it with real projects that demonstrate your technical skills and problem-solving abilities.</p>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-users"></i> Who the Guide is for</h3>
+                    <p>This guide is designed specifically for computer science and software engineering students seeking to create an effective online presence for job applications. It's particularly valuable for those preparing to enter the job market who need to showcase their technical capabilities to potential employers in a professional manner but have limited resources for paid services.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Build Your Brand</h3>
-                    <p>Establish your online presence and showcase your unique style, abilities, and the value you bring to potential employers.</p>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-lightbulb"></i> Prior Knowledge Assumptions</h3>
+                    <p>The guide assumes that users have basic familiarity with software development concepts and have completed at least introductory programming courses. While no advanced technical skills are required to follow the guide, familiarity with web technologies (HTML, CSS, JavaScript) will be helpful. The guide provides sufficient context for those with varying levels of expertise.</p>
                 </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-sitemap"></i> Guide Organization</h3>
+                    <p>The guide is organized into a logical sequence of practical steps, following the portfolio development process from start to finish:</p>
+                    <ol>
+                        <li>Initial environment setup and repository configuration</li>
+                        <li>Customizing your developer profile and projects showcase</li>
+                        <li>Deployment and domain configuration</li>
+                        <li>Ongoing maintenance and updates</li>
+                    </ol>
+                    <p>Each section builds on the previous one, creating a complete workflow for portfolio creation.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-info-circle"></i> Using This Guide</h3>
+                    <p>For best results, follow these guidelines when using this resource:</p>
+                    <ul>
+                        <li>Complete each step in sequence before moving to the next</li>
+                        <li>Use the detailed setup instructions in the Portfolio Guide section</li>
+                        <li>Refer to the Resources section for specialized tools and platforms</li>
+                        <li>Adapt the technical examples to match your personal projects and skills</li>
+                        <li>Set aside 3-5 hours for the complete portfolio creation process</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="table-of-contents">
+                <h3>Guide Contents</h3>
+                <ul>
+                    <li><a href="#guide-content">1. Front Matter</a>
+                        <ul>
+                            <li><a href="#guide-content">1.1 What's in the Guide</a></li>
+                            <li><a href="#guide-content">1.2 Who the Guide is for</a></li>
+                            <li><a href="#guide-content">1.3 Prior Knowledge Assumptions</a></li>
+                            <li><a href="#guide-content">1.4 Guide Organization</a></li>
+                            <li><a href="#guide-content">1.5 Using This Guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#steps">2. Portfolio Development Process</a>
+                        <ul>
+                            <li><a href="setup.html#stage-1">2.1 Initial Setup</a></li>
+                            <li><a href="setup.html#stage-2">2.2 Portfolio Customization</a></li>
+                            <li><a href="setup.html#stage-3">2.3 Deployment Process</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#resources">3. Curated Resources</a>
+                        <ul>
+                            <li><a href="#resources">3.1 GitHub Profile Documentation</a></li>
+                            <li><a href="#resources">3.2 Vercel Deployment Platform</a></li>
+                            <li><a href="#resources">3.3 Frontend Developer Roadmap</a></li>
+                            <li><a href="#resources">3.4 Developer Portfolio Examples</a></li>
+                            <li><a href="#resources">3.5 Web Performance Optimization</a></li>
+                            <li><a href="#resources">3.6 Technical Resume Templates</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 
     <section class="steps" id="steps">
         <div class="container">
-            <h2>Portfolio Creation Process</h2>
+            <div class="section-heading">
+                <span class="section-badge">Development Process</span>
+                <h2>Portfolio Development Process</h2>
+                <div class="heading-underline"></div>
+            </div>
             <div class="steps-list">
                 <div class="step">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <h3>Set Up Your Repository</h3>
-                        <p>Create a GitHub account and use our professional template to get started in minutes - no coding required.</p>
-                        <a href="setup.html#stage-1" class="step-link">View Setup Guide <i class="fas fa-arrow-right"></i></a>
+                        <h3>Configure Your Development Environment</h3>
+                        <p>Set up a GitHub repository with our developer-focused template from <a href="https://github.com/Taranveer1/dev-portfolio" target="_blank">Taranveer1/dev-portfolio</a>, complete with proper project structure and configuration for hosting a professional portfolio.</p>
+                        <a href="setup.html#stage-1" class="step-link">Environment Setup Guide <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3>Customize Your Portfolio</h3>
-                        <p>Personalize your portfolio with your information, projects, and professional photo - all through a simple interface.</p>
-                        <a href="setup.html#stage-2" class="step-link">View Customization Guide <i class="fas fa-arrow-right"></i></a>
+                        <h3>Customize Your Technical Profile</h3>
+                        <p>Add your programming skills, project descriptions, code samples, and GitHub stats to highlight your development expertise and technical capabilities.</p>
+                        <a href="setup.html#stage-2" class="step-link">Profile Configuration <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h3>Deploy Your Website</h3>
-                        <p>Publish your portfolio online for free with GitHub Pages or Vercel, making it accessible to employers worldwide.</p>
-                        <a href="setup.html#stage-3" class="step-link">View Deployment Guide <i class="fas fa-arrow-right"></i></a>
+                        <h3>Implement Continuous Deployment</h3>
+                        <p>Set up automated CI/CD with GitHub Actions or Vercel to enable continuous deployment of your portfolio whenever you push code changes.</p>
+                        <a href="setup.html#stage-3" class="step-link">Deployment Pipeline Guide <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
                     <div class="step-content">
-                        <h3>Share and Update</h3>
-                        <p>Add your portfolio to your resume, social media, and job applications. Keep it updated as you grow professionally.</p>
-                        <a href="setup.html#next-steps" class="step-link">View Next Steps <i class="fas fa-arrow-right"></i></a>
+                        <h3>Connect Developer Networks</h3>
+                        <p>Integrate your Stack Overflow profile, GitHub statistics, and technical blog to create a comprehensive developer presence that impresses potential employers.</p>
+                        <a href="setup.html#next-steps" class="step-link">Integration Steps <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -138,9 +221,82 @@
 
     <section class="cta">
         <div class="container">
-            <h2>Ready to Build Your Portfolio?</h2>
-            <p>Start creating your professional developer portfolio today - no coding experience required.</p>
-            <a href="setup.html" class="btn btn-primary">Get Started Now</a>
+            <h2>Ready to Build Your Developer Portfolio?</h2>
+            <p>Follow our detailed step-by-step instructions to create a professional portfolio that showcases your technical skills to employers.</p>
+            <a href="setup.html" class="btn btn-primary">Access Detailed Guide</a>
+        </div>
+    </section>
+
+    <section class="resources" id="resources">
+        <div class="container">
+            <div class="section-heading">
+                <span class="section-badge">Curated Resources</span>
+                <h2>Essential Developer Resources</h2>
+                <div class="heading-underline"></div>
+            </div>
+            <p class="resources-intro">The following resources have been technically evaluated for their specific value to computer science students creating developer portfolios. Each resource addresses particular technical challenges in portfolio creation and professional presentation.</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fab fa-github"></i></div>
+                    <h3>GitHub Profile README Documentation</h3>
+                    <p><strong>Purpose:</strong> Comprehensive documentation for creating a technically impressive GitHub profile README that serves as an extension of your portfolio.</p>
+                    <p><strong>Key technical features:</strong> Markdown formatting for professional presentation, GitHub statistics API integration, automated content updates with GitHub Actions workflows, embedding custom SVG badges, and repository metrics.</p>
+                    <p><strong>Implementation difficulty:</strong> Beginner to Intermediate</p>
+                    <p><strong>Recommended implementation approach:</strong> Start with the GitHub Stats widgets to display your programming language usage and contribution metrics automatically. Then implement GitHub Actions workflows to update your README with recent blog posts, stack overflow activity, or project releases.</p>
+                    <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme" class="resource-link" target="_blank">GitHub Docs <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Vercel Deployment Platform</h3>
+                    <p><strong>Purpose:</strong> Enterprise-grade hosting infrastructure that simplifies the deployment process for React, Next.js, Vue, and other frontend frameworks with integrated CI/CD pipelines.</p>
+                    <p><strong>Key technical features:</strong> Serverless functions, edge network deployment, automatic HTTPS/SSL, preview deployments for pull requests, and built-in analytics for Core Web Vitals.</p>
+                    <p><strong>Implementation difficulty:</strong> Beginner</p>
+                    <p><strong>Recommended implementation approach:</strong> Connect your GitHub repository to Vercel for automatic deployments on every commit. Set up environment variables for API keys and external services. Enable the GitHub integration to get deployment previews on pull requests for feedback before merging changes.</p>
+                    <a href="https://vercel.com/docs" class="resource-link" target="_blank">Vercel Docs <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-road"></i></div>
+                    <h3>Frontend Developer Roadmap</h3>
+                    <p><strong>Purpose:</strong> Interactive learning path that outlines the technical skills, libraries, and concepts required for modern frontend development, with recommended learning order.</p>
+                    <p><strong>Key technical features:</strong> Interactive diagram, skill categorization (essential vs. optional), technology version recommendations, and learning resource links for each topic.</p>
+                    <p><strong>Implementation difficulty:</strong> N/A (Reference resource)</p>
+                    <p><strong>Recommended implementation approach:</strong> Use the roadmap to identify gaps in your technical knowledge before building your portfolio. Incorporate technologies from the "must-know" category in your portfolio projects. Reference specific roadmap technologies in your resume and portfolio to align with industry expectations.</p>
+                    <a href="https://roadmap.sh/frontend" class="resource-link" target="_blank">View Roadmap <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Developer Portfolio Examples</h3>
+                    <p><strong>Purpose:</strong> GitHub repository containing extensively categorized examples of developer portfolios with source code links for inspiration and technical reference.</p>
+                    <p><strong>Key technical features:</strong> Source code analysis, framework-specific collections, responsive design examples, and creative UI patterns for portfolio presentation.</p>
+                    <p><strong>Implementation difficulty:</strong> N/A (Reference resource)</p>
+                    <p><strong>Recommended implementation approach:</strong> Study implementation patterns in portfolios that match your tech stack. Analyze how others present similar projects to yours and identify opportunities for differentiation. Look at how animations, transitions, and interactive elements are implemented in the source code.</p>
+                    <a href="https://github.com/emmabostian/developer-portfolios" class="resource-link" target="_blank">GitHub Collection <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3>Web Performance Optimization</h3>
+                    <p><strong>Purpose:</strong> In-depth technical guide from Google on optimizing Core Web Vitals metrics that directly impact user experience and search ranking.</p>
+                    <p><strong>Key technical features:</strong> Performance measurement techniques, optimization strategies for LCP, FID, and CLS metrics, image optimization best practices, and JavaScript performance patterns.</p>
+                    <p><strong>Implementation difficulty:</strong> Intermediate to Advanced</p>
+                    <p><strong>Recommended implementation approach:</strong> Run Lighthouse audits on your portfolio and implement the recommended improvements, focusing first on image optimization and code splitting. Use the Performance tab in Chrome DevTools to identify JavaScript bottlenecks and implement the suggested optimizations.</p>
+                    <a href="https://web.dev/learn-web-vitals/" class="resource-link" target="_blank">Web.dev Guide <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Technical Resume Templates</h3>
+                    <p><strong>Purpose:</strong> ATS-optimized resume templates specifically designed for software engineers and computer science graduates that highlight technical skills and achievements.</p>
+                    <p><strong>Key technical features:</strong> LaTeX templates with technical sections, customizable skill levels, project integrations with GitHub links, and achievement formatting for technical roles.</p>
+                    <p><strong>Implementation difficulty:</strong> Beginner</p>
+                    <p><strong>Recommended implementation approach:</strong> Choose the "Projects-Focused" template if you have limited work experience. Format your technical accomplishments using the formula: Technology + Action + Result/Metric. Link your resume and portfolio with consistent branding, and include GitHub links to specific repositories mentioned in your resume.</p>
+                    <a href="https://www.resumemaker.online/developer-resume-examples" class="resource-link" target="_blank">Resume Examples <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -148,26 +304,27 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>Dev Portfolio Guide</h3>
-                    <p>A simple guide to help developers create professional portfolios to showcase their skills and projects.</p>
+                    <h3>Internet Resource Guide</h3>
+                    <p>A comprehensive technical guide for computer science students to create professional portfolio websites that showcase coding skills and projects to potential employers.</p>
                 </div>
                 <div class="footer-col">
-                    <h3>Quick Links</h3>
+                    <h3>Developer Tools</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="setup.html">Setup Guide</a></li>
+                        <li><a href="https://github.com/features/actions" target="_blank">GitHub Actions</a></li>
+                        <li><a href="https://vitejs.dev/" target="_blank">Vite</a></li>
+                        <li><a href="https://nextjs.org/" target="_blank">Next.js</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Resources</h3>
+                    <h3>Additional Resources</h3>
                     <ul>
-                        <li><a href="https://github.com/topics/portfolio-template" target="_blank">GitHub Templates</a></li>
-                        <li><a href="https://vercel.com/" target="_blank">Vercel Hosting</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn" target="_blank">MDN Docs</a></li>
+                        <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
+                        <li><a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a></li>
+                        <li><a href="https://react.dev/" target="_blank">React Documentation</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="copyright">&copy; 2023 Developer Portfolio Guide. All rights reserved.</p>
+            <p class="copyright">&copy; 2023 Internet Resource Guide for Developer Portfolios. Created for CS Students.</p>
         </div>
     </footer>
 
